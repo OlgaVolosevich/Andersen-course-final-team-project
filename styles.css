@@ -1,0 +1,74 @@
+:root {
+    --success-color: #4bbf73;
+    --danger-color: #d9534f;
+    --info-color: #1f9bcf;
+    --main-gray-color: #343a40;
+    --main-black-color: #1a1a1a;
+    --main-white-color: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    outline: none;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1240px;
+}
+
+.heading {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--main-black-color);
+}
+
+.btn {
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.3rem 1rem;
+    line-height: 1.5rem;
+    font-size: 0.7rem;
+    border: 1px solid transparent;
+    background-color: var(--main-white-color);
+}
+
+.btn-success {
+    border: 1px solid var(--success-color);
+}
+
+.btn-success:hover {
+    background-color: var(--success-color); 
+}
+
+.btn-danger {
+    border: 1px solid var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-color);
+}
+
+.btn-info {
+    border: 1px solid var(--info-color);
+}
+
+.btn-info:hover {
+    background-color: var(--info-color);
+}
+
+.btn-success:hover, .btn-danger:hover, .btn-info:hover {
+    color: var(--main-white-color);
+}
+
+
+
