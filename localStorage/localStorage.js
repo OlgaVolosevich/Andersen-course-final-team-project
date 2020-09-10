@@ -21,7 +21,10 @@ class LSClient {
   }
 
   getCartProducts() {
-    return this.getData("cart");
+    if (!this.keyCheck("cart")) {
+      this.setData("cart", []);
+    }
+    return JSON.parse(this.getData("cart"));
   }
 
   setCartProducts(products) {
