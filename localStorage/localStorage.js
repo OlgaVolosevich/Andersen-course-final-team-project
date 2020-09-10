@@ -32,7 +32,4 @@ class LSClient {
   }
 }
 
-localStorage.clear();
-console.log(localStorage)
-
 const LSService = new LSClient();

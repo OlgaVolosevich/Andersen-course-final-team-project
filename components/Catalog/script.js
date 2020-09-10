@@ -4,8 +4,8 @@ window.onload = function () {
   class Catalog {
     _root = document.getElementsByClassName("catalog")[0];
 
-    makeCartProduct (item) {
-      const {description, category, ...cartProduct} = item;
+    makeCartProduct(item) {
+      const { description, category, ...cartProduct } = item;
       cartProduct.amount = 1;
       return cartProduct;
     }
