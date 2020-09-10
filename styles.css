@@ -5,6 +5,9 @@
     --main-gray-color: #343a40;
     --main-black-color: #1a1a1a;
     --main-white-color: #fff;
+    --spacing-large: 30px;
+    --spacing-medium: 15px;
+    --spacing-small: 10px;
 }
 
 * {
@@ -17,8 +20,8 @@
 }
 
 main {
-    margin: 0 auto;
-    max-width: 1240px;
+    margin: var(--spacing-large) auto;
+    max-width: 1200px;
 }
 
 .heading {
