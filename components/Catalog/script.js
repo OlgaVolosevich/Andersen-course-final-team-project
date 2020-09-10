@@ -4,8 +4,26 @@ window.onload = function () {
   class Catalog {
     _root = document.getElementsByClassName("catalog")[0];
 
+    makeCartProduct (item) {
+      const {description, category, ...cartProduct} = item;
+      cartProduct.amount = 1;
+      return cartProduct;
+    }
+
     addToCart(item) {
-      return item;
+      const cartProduct = this.makeCartProduct(item);
+      let hasSameItem = false;
+      const products = LSService.getCartProducts().map((el) => {
+        if (el.id === item.id) {
+          el.amount++;
+          hasSameItem = true;
+        }
+        return el;
+      });
+      if (!hasSameItem) {
+        products.push(cartProduct);
+      }
+      LSService.setCartProducts(products);
     }
 
     showDelails(item) {
@@ -47,7 +65,7 @@ window.onload = function () {
         itemBtnWrapper.append(detailsBtn);
         itemBtnWrapper.append(addToCartBtn);
         itemWrapper.innerHTML += ITEM_INNER_HTML;
-        itemWrapper.append(itemBtnWrapper)
+        itemWrapper.append(itemBtnWrapper);
         this._root.append(itemWrapper);
       });
     }

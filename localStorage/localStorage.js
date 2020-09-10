@@ -21,12 +21,18 @@ class LSClient {
   }
 
   getCartProducts() {
-    return this.getData("cart");
+    if (!this.keyCheck("cart")) {
+      this.setData("cart", []);
+    }
+    return JSON.parse(this.getData("cart"));
   }
 
   setCartProducts(products) {
     return this.setData("cart", products);
   }
 }
+
+localStorage.clear();
+console.log(localStorage)
 
 const LSService = new LSClient();
