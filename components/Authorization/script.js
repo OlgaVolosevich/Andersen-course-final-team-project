@@ -13,7 +13,7 @@ MODAL_WRAP.addEventListener('click', closeModal);
 
 function formEvent(e) {
   if(USERNAME.value === 'admin' && PASSWORD.value === 'admin') {
-    localStorage.setItem(USERNAME.value, PASSWORD.value)
+    localStorage.setItem('user', JSON.stringify({login : USERNAME.value, password : PASSWORD.value}));
   } else {
     e.preventDefault();
     PASSWORD.classList.add('invalid');
