@@ -8,7 +8,7 @@ const PASSWORD = document.querySelector('#form_password');
 const FEEDBACK = document.querySelector('.invalid-feedback');
 
 if(LSService.keyCheck('user')) {
-  AUTH.addEventListener('click', logOut)
+  AUTH.addEventListener('click', logOut);
   AUTH.innerHTML = 'Log out';
 } else if(!LSService.keyCheck('user')) {
   AUTH.addEventListener('click', openModal);
@@ -43,5 +43,5 @@ function closeModal(e) {
 }
 function logOut() {
   LSService.deleteData('user');
-  AUTH.innerHTML = 'Log in';
+  document.location.reload();
 }
