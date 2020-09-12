@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="icons/icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components/Authorization/styles.css">
@@ -14,11 +15,42 @@
 
 <body>
     <header>
+        <nav id="navbar">
+            <a href="#" class="navbar_logo"></a>
+            <div id="navbar_nav">
+                <div class="navbar_block">
+                    <a class="goodsCategory" id="filter_all">All Goods</a>
+                    <a class="goodsCategory" id="filter_men">Men</a>
+                    <a class="goodsCategory" id="filter_women">Women</a>
+                    <a class="goodsCategory" id="filter_electr">Electronics</a>
+                    <a class="goodsCategory" id="filter_jew">Jewerly</a>
+                    <a class="goodsCategory icon-sort-amount-asc" id="filter_cost"></a>
+                </div>
+                <div class="navbar_block">
+                    <button id="open_auth" class="btn">Log in</button>
+                </div>
+            </div>
+        </nav>
         <div class="cart"></div>
     </header>
     <main>
         <div class="catalog"></div>
-        <div class="authorization"></div>
+        <div class="authorization">
+            <div class="modal">
+                <h1 class="heading">login</h1>
+                <form id="form">
+                    <label for="form_username">Username</label>
+                    <input type="text" name="" id="form_username" class="form_input" required>
+                    <label for="form_password">Password</label>
+                    <input type="password" name="" id="form_password" class="form_input" required>
+                    <div class="invalid-feedback">Invalid username or password</div>
+                    <div id="form_btns">
+                        <button type="submit" id="authLogin" class="btn">Login</button>
+                        <button id="authClose" class="btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
     <script src="apiClient/fakeStoreAPI.js"></script>
     <script src="localStorage/localStorage.js"></script>
