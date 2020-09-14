@@ -1,47 +1,60 @@
-const AUTH = document.querySelector('#open_auth');
-const MODAL_WRAP = document.querySelector('.authorization');
-const MODAL = document.querySelector('.modal');
-const FORM = document.querySelector('#form');
-const AUTH_CLOSE = document.querySelector('#authClose');
-const USERNAME = document.querySelector('#form_username');
-const PASSWORD = document.querySelector('#form_password');
-const FEEDBACK = document.querySelector('.invalid-feedback');
-
-if(LSService.keyCheck('user')) {
-  AUTH.addEventListener('click', logOut);
-  AUTH.innerHTML = 'Log out';
-} else if(!LSService.keyCheck('user')) {
-  AUTH.addEventListener('click', openModal);
-  AUTH.innerHTML = 'Log in';
-}
-
-FORM.addEventListener('submit', formEvent);
-MODAL_WRAP.addEventListener('click', closeModal);
-
-function formEvent(e) {
-  if(USERNAME.value === 'admin' && PASSWORD.value === 'admin') {
-    localStorage.setItem('user', JSON.stringify({login : USERNAME.value, password : PASSWORD.value}));
-  } else {
+class Authorization {
+  _root = {
+    auth : document.querySelector('#open_auth'),
+    modalWrap : document.querySelector('.authorization'),
+    modal : document.querySelector('.modal'),
+    form : document.querySelector('#form'),
+    authClose : document.querySelector('#authClose'),
+    username : document.querySelector('#form_username'),
+    password : document.querySelector('#form_password'),
+    feedback : document.querySelector('.invalid-feedback')
+  }
+  openModal() {
+    this._root.modalWrap.style.visibility = 'visible';
+    this._root.modal.style.transform = 'translateY(0px)';
+  }
+  hideModal() {
+    this._root.username.value = '';
+    this._root.password.value = '';
+    this._root.password.classList.remove('invalid');
+    this._root.feedback.style.visibility = 'hidden';
+    this._root.modalWrap.style.visibility = 'hidden';
+    this._root.modal.style.transform = 'translateY(-600px)';
+  }
+  formEvent(e) {
+    const ROOT = this._root;
     e.preventDefault();
-    PASSWORD.classList.add('invalid');
-    FEEDBACK.style.visibility = 'visible';
+    if (ROOT.username.value === 'admin' && ROOT.password.value === 'admin') {
+      localStorage.setItem('user', JSON.stringify({login : ROOT.username.value,
+        password : ROOT.password.value}));
+      this.hideModal();
+      ROOT.auth.innerHTML = 'Log out';
+    } else {
+      ROOT.password.classList.add('invalid');
+      ROOT.feedback.style.visibility = 'visible';
+    }
+  }
+  logOut() {
+    LSService.deleteData('user');
+  }
+  render() {
+    const ROOT = this._root;
+    ROOT.modalWrap.addEventListener('click', (e) => {
+      if ((!e.target.closest('.modal')) || (e.target === ROOT.authClose)) {
+        this.hideModal();
+      }
+    })
+    ROOT.form.addEventListener('submit', this.formEvent.bind(this));
+    ROOT.auth.addEventListener('click', () => {
+      if (LSService.keyCheck('user')) {
+        this.logOut();
+        ROOT.auth.innerHTML = 'Log in';
+      } else if (!LSService.keyCheck('user')) {
+        this.openModal();
+      }
+    })
   }
 }
-function openModal() {
-  MODAL_WRAP.style.visibility = 'visible';
-  MODAL.style.transform = 'translateY(0px)';
-}
-function closeModal(e) {
-  if((!e.target.closest('.modal')) || (e.target === AUTH_CLOSE)) {
-    USERNAME.value = '';
-    PASSWORD.value = '';
-    PASSWORD.classList.remove('invalid');
-    FEEDBACK.style.visibility = 'hidden';
-    MODAL_WRAP.style.visibility = 'hidden';
-    MODAL.style.transform = 'translateY(-600px)';
-  }
-}
-function logOut() {
-  LSService.deleteData('user');
-  document.location.reload();
-}
+
+const newAuth = new Authorization();
+newAuth.render();
