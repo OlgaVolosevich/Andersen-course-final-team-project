@@ -73,5 +73,15 @@ main {
     color: var(--main-white-color);
 }
 
+.navbar_nav {
+    height: 100%;
+    
+}
+.navbar_category {
+    display: inline-block;
+    height: 100%;
+    color: #fff;
+}
+
 
 
