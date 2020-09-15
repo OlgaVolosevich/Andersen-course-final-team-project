@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="components/Authorization/styles.css">
     <link rel="stylesheet" href="components/Cart/styles.css">
     <link rel="stylesheet" href="components/Catalog/styles.css">
+    <link rel="stylesheet" href="components/DataProcessing/style.css">
     <title>Online Shop</title>
 </head>
 
@@ -19,12 +20,11 @@
             <a href="#" class="navbar_logo"></a>
             <div id="navbar_nav">
                 <div class="navbar_block">
-                    <a class="goodsCategory" id="filter_all">All Goods</a>
-                    <a class="goodsCategory" id="filter_men">Men</a>
-                    <a class="goodsCategory" id="filter_women">Women</a>
-                    <a class="goodsCategory" id="filter_electr">Electronics</a>
-                    <a class="goodsCategory" id="filter_jew">Jewerly</a>
-                    <a class="goodsCategory icon-sort-amount-asc" id="filter_cost"></a>
+                    <a class="navbar_category" id="all">All Goods</a>
+                    <a class="navbar_category" id="men clothing">Men</a>
+                    <a class="navbar_category" id="women clothing">Women</a>
+                    <a class="navbar_category" id="electronics">Electronics</a>
+                    <a class="navbar_category" id="jewelery">Jewerly</a>
                 </div>
                 <div class="navbar_block">
                     <button id="open_auth" class="btn">Log in</button>
@@ -34,6 +34,10 @@
         <div class="cart"></div>
     </header>
     <main>
+        <div class="search-bar">
+            <input class="search-bar__input" type="text" placeholder="Type here to search">
+            <span class="search-bar__icon-close">&times;</span>
+        </div>
         <div class="catalog"></div>
         <div class="authorization">
             <div class="modal">
@@ -54,6 +58,7 @@
     </main>
     <script src="apiClient/fakeStoreAPI.js"></script>
     <script src="localStorage/localStorage.js"></script>
+    <script src="components/DataProcessing/script.js"></script>
     <script src="components/Authorization/script.js"></script>
     <script src="components/Cart/script.js"></script>
     <script src="components/Catalog/script.js"></script>

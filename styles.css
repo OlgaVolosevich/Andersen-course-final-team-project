@@ -29,7 +29,7 @@ main {
     letter-spacing: 3px;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.2rem;
     color: var(--main-black-color);
 }
 
@@ -71,6 +71,16 @@ main {
 
 .btn-success:hover, .btn-danger:hover, .btn-info:hover {
     color: var(--main-white-color);
+}
+
+.navbar_nav {
+    height: 100%;
+    
+}
+.navbar_category {
+    display: inline-block;
+    height: 100%;
+    color: #fff;
 }
 
 
