@@ -22,15 +22,28 @@ class Catalog {
     if (!hasSameItem) {
       products.push(cartProduct);
     }
-    LSService.setCartProducts(products);
+    return LSService.setCartProducts(products);
   }
 
   showDelails(item) {
     return item;
   }
 
+  cleanCatalog() {
+    return (this._root.innerHTML = "");
+  }
+
   render(products) {
-    products.forEach((item) => {
+    this.cleanCatalog();
+    if (!products) {
+      const warning = `
+      <p class="catalog__warning heading"> 
+        Sorry, nothing found :(
+      </p>
+      `;
+      return (this._root.innerHTML = warning);
+    }
+    return products.forEach((item) => {
       const itemWrapper = document.createElement("div");
       itemWrapper.classList.add("catalog-item");
 

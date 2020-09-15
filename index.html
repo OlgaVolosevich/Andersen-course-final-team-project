@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="components/Authorization/styles.css">
     <link rel="stylesheet" href="components/Cart/styles.css">
     <link rel="stylesheet" href="components/Catalog/styles.css">
+    <link rel="stylesheet" href="components/DataProcessing/style.css">
     <title>Online Shop</title>
 </head>
 
@@ -24,7 +25,6 @@
                     <a class="navbar_category" id="women clothing">Women</a>
                     <a class="navbar_category" id="electronics">Electronics</a>
                     <a class="navbar_category" id="jewelery">Jewerly</a>
-                    <a class="goodsCategory icon-sort-amount-asc" id="filter_cost"></a>
                 </div>
                 <div class="navbar_block">
                     <button id="open_auth" class="btn">Log in</button>
@@ -34,6 +34,10 @@
         <div class="cart"></div>
     </header>
     <main>
+        <div class="search-bar">
+            <input class="search-bar__input" type="text" placeholder="Type here to search">
+            <span class="search-bar__icon-close">&times;</span>
+        </div>
         <div class="catalog"></div>
         <div class="authorization">
             <div class="modal">
