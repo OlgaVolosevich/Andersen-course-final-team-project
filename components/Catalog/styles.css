@@ -38,8 +38,3 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 2px;
 }
-
-.catalog__warning {
-    text-align: center;
-    color: var(--main-grey-color);
-}
