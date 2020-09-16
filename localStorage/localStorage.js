@@ -4,6 +4,7 @@ class LSClient {
   keyCheck(key) {
     return localStorage.getItem(key) !== null;
   }
+
   getData(key) {
     if (this.keyCheck(key)) {
       return localStorage.getItem(key);
@@ -18,6 +19,12 @@ class LSClient {
 
   deleteData(key) {
     return localStorage.removeItem(key);
+  }
+
+  deleteDataOnId(productId) {
+    const productsFromLS = JSON.parse(localStorage.getItem("cart"));
+    const filteredArrProducts = productsFromLS.filter(item => item.id !== productId);
+    localStorage.setItem("cart", JSON.stringify(filteredArrProducts));
   }
 
   getCartProducts() {

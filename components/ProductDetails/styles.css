@@ -8,6 +8,7 @@
     background-color: white;
     padding-top: 30px;
     color: var(--main-gray-color);
+    z-index: 7777;
   }
   .product-details {
     margin: 20px;
