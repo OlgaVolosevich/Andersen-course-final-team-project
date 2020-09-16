@@ -2,12 +2,8 @@
 
 window.onload = function () {
   let dataManager;
-  apiService.getAllProducts().then((items) => {
-    catalogPage.render(items);
-    dataManager = new DataWork(items);
-  });
-
   const roots = {
+    catalog: document.getElementsByClassName("catalog")[0],
     logo: document.getElementsByClassName("navbar_logo")[0],
     searchBar: document.getElementsByClassName("search-bar__input")[0],
     cleanSearchBarIcon: document.getElementsByClassName(
@@ -21,6 +17,13 @@ window.onload = function () {
       jewelryCategory: document.getElementById("jewelery"),
     },
   };
+
+  apiService.getAllProducts().then((items) => {
+    catalogPage.render(items);
+    dataManager = new DataWork(items);
+  });
+
+  console.log(roots.catalog)
 
   class DataWork {
     constructor(items) {

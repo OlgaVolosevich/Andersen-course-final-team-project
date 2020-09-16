@@ -83,5 +83,10 @@ main {
     color: #fff;
 }
 
+.warning {
+    text-align: center;
+    color: var(--main-grey-color);
+}
+
 
 

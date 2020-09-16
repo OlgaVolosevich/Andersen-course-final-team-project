@@ -33,15 +33,19 @@ class Catalog {
     return (this._root.innerHTML = "");
   }
 
-  render(products) {
-    this.cleanCatalog();
-    if (!products) {
-      const warning = `
-      <p class="catalog__warning heading"> 
+  showWarning() {
+    const WARNING = `
+      <p class="warning heading"> 
         Sorry, nothing found :(
       </p>
       `;
-      return (this._root.innerHTML = warning);
+    return (this._root.innerHTML = WARNING);
+  }
+
+  render(products) {
+    this.cleanCatalog();
+    if (!products) {
+      return this.showWarning();
     }
     return products.forEach((item) => {
       const itemWrapper = document.createElement("div");
