@@ -3,30 +3,8 @@
 class Catalog {
   _root = document.getElementsByClassName("catalog")[0];
 
-  makeCartProduct(item) {
-    const { description, category, ...cartProduct } = item;
-    cartProduct.amount = 1;
-    return cartProduct;
-  }
-
-  addToCart(item) {
-    const cartProduct = this.makeCartProduct(item);
-    let hasSameItem = false;
-    const products = LSService.getCartProducts().map((el) => {
-      if (el.id === item.id) {
-        el.amount++;
-        hasSameItem = true;
-      }
-      return el;
-    });
-    if (!hasSameItem) {
-      products.push(cartProduct);
-    }
-    return LSService.setCartProducts(products);
-  }
-
   showDelails(item) {
-    return item;
+    productDetails.openProductDetailsModalWindow(item);
   }
 
   cleanCatalog() {
@@ -65,7 +43,7 @@ class Catalog {
       addToCartBtn.classList.add("btn");
       addToCartBtn.classList.add("btn-success");
       addToCartBtn.classList.add("addToCartBtn");
-      addToCartBtn.addEventListener("click", () => this.addToCart(item));
+      addToCartBtn.addEventListener("click", () => cartShop.addToCart(item));
 
       const detailsBtn = document.createElement("button");
       detailsBtn.innerText = "details";
