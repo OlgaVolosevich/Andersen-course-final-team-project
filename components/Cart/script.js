@@ -14,4 +14,10 @@ class Cart {
 	  `;
     document.getElementsByClassName("cart")[0].innerHTML = addCartToHeader;
   }
+
+  makeCartProduct(item) {
+    const { description, category, ...cartProduct } = item;
+    cartProduct.amount = 1;
+    return cartProduct;
+  }
 }
