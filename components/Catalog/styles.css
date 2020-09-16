@@ -38,3 +38,8 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 2px;
 }
+
+.catalog__preloader-wrapper {
+    display: flex;
+    justify-content: center;
+}
