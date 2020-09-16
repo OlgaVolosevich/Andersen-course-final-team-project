@@ -32,6 +32,8 @@
     margin: 0 15px;
 }
 .navbar_category {
+    display: flex;
+    align-items: center;
     text-transform: uppercase;
     color: #fff;
     letter-spacing: .3px;
