@@ -37,4 +37,8 @@ class Cart {
     LSService.setCartProducts(products);
     cartShop.render();
   }
+
+  closeCartModalWindow() {
+    document.getElementById("modalwindow").innerHTML = '';
+  }
 }
