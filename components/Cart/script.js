@@ -68,4 +68,11 @@ class Cart {
     LSService.setCartProducts(products);
     this.openCartModalWindow();
   }
+
+  delProductFromCart(id) {
+    LSService.deleteDataOnId(id);
+    const products = LSService.getCartProducts();
+    this.render(products.length);
+    this.openCartModalWindow();
+  }
 }
