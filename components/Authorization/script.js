@@ -42,17 +42,18 @@ class Authorization {
   }
   logOut() {
     LSService.deleteData('user');
+    this._root.auth.innerHTML = 'Log in';
   }
   burg() {
     const {burger, navbar} = this._root;
     burger.classList.toggle('navbar_burger_active')
-      if (!burger.classList.contains('navbar_burger_active')) {
-        navbar.style.visibility = 'hidden';
-        navbar.style.transform = 'translateX(100%)'
-      } else if(burger.classList.contains('navbar_burger_active')) {
-        navbar.style.visibility = 'visible';
-        navbar.style.transform = 'translateX(0%)'
-      }
+    if (!burger.classList.contains('navbar_burger_active')) {
+      navbar.style.visibility = 'hidden';
+      navbar.style.transform = 'translateX(100%)'
+    } else if (burger.classList.contains('navbar_burger_active')) {
+      navbar.style.visibility = 'visible';
+      navbar.style.transform = 'translateX(0%)';
+    }
   }
   render() {
     const {modalWrap, authClose, form, auth, burger} = this._root;
@@ -62,14 +63,13 @@ class Authorization {
       }
     })
     form.addEventListener('submit', this.formEvent.bind(this));
-    auth.addEventListener('click', () => {
-      if (LSService.keyCheck('user')) {
-        this.logOut();
-        auth.innerHTML = 'Log in';
-      } else if (!LSService.keyCheck('user')) {
-        this.openModal();
-      }
-    })
+    if (LSService.keyCheck('user')) {
+      auth.innerHTML = 'Log out';
+      auth.addEventListener('click', this.logOut.bind(this))
+    } else if(!LSService.keyCheck('user')) {
+      auth.innerHTML = 'Log in';
+      auth.addEventListener('click', this.openModal.bind(this))
+    }
     burger.addEventListener('click', this.burg.bind(this))
   }
 }
