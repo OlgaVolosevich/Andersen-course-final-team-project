@@ -9,7 +9,6 @@
     display: flex;
     align-items: center;
     z-index: 999;
-    justify-content: space-between;
 }
 .navbar_logo {
     width: 100px;
@@ -32,50 +31,6 @@
     align-items: center;
     margin: 0 15px;
 }
-
-/*Burger Menu*/
-
-.navbar_burger {
-    display: none;
-    width: 60px;
-    height: 60px;
-    position: relative;
-    right: 20px;
-}
-.navbar_burger span,
-.navbar_burger span::before,
-.navbar_burger span::after {
-    position: absolute;
-    top: 50%;
-    margin-top: -1.5px;
-    left: 50%;
-    margin-left: -15px;
-    width: 30px;
-    height: 3px;
-    background-color: #fff;
-}
-.navbar_burger span::before,
-.navbar_burger span::after {
-    content: '';
-    display: block;
-    transition: 0.1s;
-}
-.navbar_burger span::before {
-    transform: translateY(-7px);
-}
-.navbar_burger span::after {
-    transform: translateY(7px);
-}
-.navbar_burger_active span {
-    height: 0;
-}
-.navbar_burger_active span::before {
-    transform: rotate(-45deg);
-}
-.navbar_burger_active span::after {
-    transform: rotate(45deg);
-}
-
 .navbar_category {
     text-transform: uppercase;
     color: #fff;
