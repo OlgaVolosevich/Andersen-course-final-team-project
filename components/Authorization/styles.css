@@ -75,7 +75,7 @@
     transform: rotate(45deg);
 }
 
-.goodsCategory {
+.navbar_category {
     text-transform: uppercase;
     color: #fff;
     letter-spacing: .3px;
