@@ -57,4 +57,15 @@ class Cart {
 	  this.openCartModalWindow();
     }
   }
+
+  pressBtnPlus(idProd) {
+    const products = LSService.getCartProducts().map((el) => {
+    if (el.id === idProd) {
+          el.amount++;
+    }
+      return el;
+    });
+    LSService.setCartProducts(products);
+    this.openCartModalWindow();
+  }
 }
