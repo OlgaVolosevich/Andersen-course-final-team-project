@@ -4,6 +4,7 @@ class ProductDetails {
   closeProductDetailsModalWindow() {
     document.getElementById("modalwindow").innerHTML = '';
   }
+  
   openProductDetailsModalWindow(item) {
     const { title: TITLE, image: IMAGE, description: DESCRIPTION, price: PRICE } = item;
 	const productDetailsModalWindow = `
