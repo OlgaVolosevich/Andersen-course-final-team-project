@@ -75,4 +75,86 @@ class Cart {
     this.render(products.length);
     this.openCartModalWindow();
   }
+
+  openCartModalWindow() {
+    const productsFotCart = LSService.getCartProducts();
+    let htmlCart = '';
+    let sumCart = 0;
+    let cartMessage = 'Cart is empty';
+			
+    productsFotCart.forEach(({ id, title, price, image, amount }) => {
+	  let totalCart = price * amount;
+      htmlCart += `
+        <div class="cart-table-row">
+          <div class="cart-table-cell">
+            <img class="cart-table-cell__img" src="${image}" alt="cart-img">
+          </div>
+          <div class="cart-table-cell">
+            <p>${title}</p>
+          </div>
+          <div class="cart-table-cell">
+            <p>${price.toLocaleString()}$</p>
+          </div>
+          <div class="cart-table-cell cart-table-cell__amount">
+            <button class="btn cart-btn-minus"  onclick="cartShop.pressBtnMinus(${amount}, ${id})">-</button>
+            <p class="cart-table-cell__count">${amount}</p>
+            <button class="btn cart-btn-plus" onclick="cartShop.pressBtnPlus(${id})">+</button>
+          </div>
+          <div class="cart-table-cell">
+            <p>${totalCart.toLocaleString()}$</p>
+		    <button class="btn cart-btn-delete" onclick="cartShop.delProductFromCart(${id})">x</button>
+          </div>
+        </div> 
+        `;
+				
+      sumCart += totalCart;
+    });
+				
+    const cartModalWindow = `
+      <div class="cart-modalwindow">
+	    <div class="modal__close" onclick="cartShop.closeCartModalWindow()"></div>
+          <div class="cart-table">
+            <div class="cart-table-row">
+              <div class="cart-table-cell__title">
+                <div class="cart-table-cell__item">goods</div>
+              </div>
+              <div class="cart-table-cell__title">
+                <div class="cart-table-cell__item">title</div>
+              </div>
+              <div class="cart-table-cell__title">
+                <div class="cart-table-cell__item">price</div>
+              </div>
+              <div class="cart-table-cell__title">
+                <div class="cart-table-cell__item">amount</div>
+              </div>
+              <div class="cart-table-cell__title">
+                <div class="cart-table-cell__item">total</div>
+              </div>
+            </div>
+               
+			${htmlCart}
+				
+            <div class="cart-table-row sum-container">
+              <div class="cart-table-cell__title cart-table-cell__sum">
+                <div class="item">sum: ${sumCart.toLocaleString()}$</div>
+              </div>
+            </div>
+		    <div class="cart-table-row btn-buy-container">
+		      <button class="btn btn-success addToCartBtn btn-buy">buy</button>
+			</div>
+          </div>
+		    <p class="cart-table-message">${cartMessage}</p>
+        </div>
+	  `;
+		
+	  document.getElementById("modalwindow").innerHTML = cartModalWindow;
+	  if (productsFotCart.length === 0) {
+	    document.getElementsByClassName("cart-table")[0].classList.add('cartMessage-display');
+	  } else {
+	    document.getElementsByClassName("cart-table-message")[0].classList.add('cartMessage-display');
+	  }
+  }
 }
+
+const cartShop = new Cart();
+cartShop.render();
