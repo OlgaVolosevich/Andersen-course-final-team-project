@@ -42,11 +42,17 @@ class Catalog {
     return (this._root.innerHTML = WARNING);
   }
 
+  showPreloader() {
+    const PRELOADER = `
+    <div class="catalog__preloader-wrapper">
+      <img src="assets/preloader2.svg">
+    </div>
+    `;
+    return (this._root.innerHTML = PRELOADER);
+  }
+
   render(products) {
     this.cleanCatalog();
-    if (!products) {
-      return this.showWarning();
-    }
     return products.forEach((item) => {
       const itemWrapper = document.createElement("div");
       itemWrapper.classList.add("catalog-item");
