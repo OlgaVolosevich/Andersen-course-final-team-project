@@ -7,52 +7,70 @@ class Authorization {
     authClose : document.querySelector('#authClose'),
     username : document.querySelector('#form_username'),
     password : document.querySelector('#form_password'),
-    feedback : document.querySelector('.invalid-feedback')
+    feedback : document.querySelector('.invalid-feedback'),
+    burger : document.querySelector('.navbar_burger'),
+    navbar : document.querySelector('#navbar_nav')
   }
   openModal() {
-    this._root.modalWrap.style.visibility = 'visible';
-    this._root.modal.style.transform = 'translateY(0px)';
+    const {modalWrap, modal} = this._root;
+    modalWrap.style.visibility = 'visible';
+    modal.style.transform = 'translateY(0px)';
   }
   hideModal() {
-    this._root.username.value = '';
-    this._root.password.value = '';
-    this._root.password.classList.remove('invalid');
-    this._root.feedback.style.visibility = 'hidden';
-    this._root.modalWrap.style.visibility = 'hidden';
-    this._root.modal.style.transform = 'translateY(-600px)';
+    const {username, password, feedback, modalWrap, modal} = this._root;
+    username.value = '';
+    password.value = '';
+    password.classList.remove('invalid');
+    username.classList.remove('invalid');
+    feedback.style.visibility = 'hidden';
+    modalWrap.style.visibility = 'hidden';
+    modal.style.transform = 'translateY(-600px)';
   }
   formEvent(e) {
-    const ROOT = this._root;
+    const {username, password, auth, feedback} = this._root;
     e.preventDefault();
-    if (ROOT.username.value === 'admin' && ROOT.password.value === 'admin') {
-      localStorage.setItem('user', JSON.stringify({login : ROOT.username.value,
-        password : ROOT.password.value}));
+    if (username.value === 'admin' && password.value === 'admin') {
+      localStorage.setItem('user', JSON.stringify({login : username.value,
+        password : password.value}));
       this.hideModal();
-      ROOT.auth.innerHTML = 'Log out';
+      auth.innerHTML = 'Log out';
     } else {
-      ROOT.password.classList.add('invalid');
-      ROOT.feedback.style.visibility = 'visible';
+      username.classList.add('invalid')
+      password.classList.add('invalid');
+      feedback.style.visibility = 'visible';
     }
   }
   logOut() {
     LSService.deleteData('user');
   }
+  burg() {
+    const {burger, navbar} = this._root;
+    burger.classList.toggle('navbar_burger_active')
+      if (!burger.classList.contains('navbar_burger_active')) {
+        navbar.style.visibility = 'hidden';
+        navbar.style.transform = 'translateX(100%)'
+      } else if(burger.classList.contains('navbar_burger_active')) {
+        navbar.style.visibility = 'visible';
+        navbar.style.transform = 'translateX(0%)'
+      }
+  }
   render() {
-    const ROOT = this._root;
-    ROOT.modalWrap.addEventListener('click', (e) => {
-      if ((!e.target.closest('.modal')) || (e.target === ROOT.authClose)) {
+    const {modalWrap, authClose, form, auth, burger} = this._root;
+    modalWrap.addEventListener('click', (e) => {
+      if ((!e.target.closest('.modal')) || (e.target === authClose)) {
         this.hideModal();
       }
     })
-    ROOT.form.addEventListener('submit', this.formEvent.bind(this));
-    ROOT.auth.addEventListener('click', () => {
+    form.addEventListener('submit', this.formEvent.bind(this));
+    auth.addEventListener('click', () => {
       if (LSService.keyCheck('user')) {
         this.logOut();
-        ROOT.auth.innerHTML = 'Log in';
+        auth.innerHTML = 'Log in';
       } else if (!LSService.keyCheck('user')) {
         this.openModal();
       }
     })
+    burger.addEventListener('click', this.burg.bind(this))
   }
 }
 
