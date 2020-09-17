@@ -65,11 +65,16 @@ class Authorization {
     form.addEventListener('submit', this.formEvent.bind(this));
     if (LSService.keyCheck('user')) {
       auth.innerHTML = 'Log out';
-      auth.addEventListener('click', this.logOut.bind(this))
     } else if(!LSService.keyCheck('user')) {
       auth.innerHTML = 'Log in';
-      auth.addEventListener('click', this.openModal.bind(this))
     }
+    auth.addEventListener('click', () => {
+      if (LSService.keyCheck('user')) {
+        this.logOut();
+      } else if(!LSService.keyCheck('user')) {
+        this.openModal();
+      }
+    })
     burger.addEventListener('click', this.burg.bind(this))
   }
 }
