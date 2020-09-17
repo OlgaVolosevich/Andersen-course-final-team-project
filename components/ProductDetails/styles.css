@@ -1,5 +1,5 @@
 .product-modalwindow {
-  width: 40%;
+  width: 50%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -9,6 +9,9 @@
   padding-top: 30px;
   color: var(--main-gray-color);
   z-index: 7777;
+  -webkit-box-shadow: 4px 4px 19px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 19px -6px rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 19px -6px rgba(0,0,0,0.75);
 }
 .product-details {
   margin: 20px;
@@ -19,6 +22,7 @@
   letter-spacing: 3px;
   font-size: 14px;
   color: var(--info-color);
+  text-align: center;
 }
 .product-details__img {
   width: 30%;
@@ -41,6 +45,7 @@
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 14px;
+  text-align: center;
 }
 .btn-product-details {
   display: block;

@@ -101,8 +101,8 @@ class Cart {
             <button class="btn cart-btn-plus" onclick="cartShop.pressBtnPlus(${id})">+</button>
           </div>
           <div class="cart-table-cell">
-            <p>${totalCart.toLocaleString()}$</p>
-		    <button class="btn cart-btn-delete" onclick="cartShop.delProductFromCart(${id})">x</button>
+            <p class="cart-item-price">${totalCart.toLocaleString()}$</p>
+		    <button class="btn cart-btn-delete" onclick="cartShop.delProductFromCart(${id})">&times;</button>
           </div>
         </div> 
         `;
@@ -134,12 +134,13 @@ class Cart {
                
 			${htmlCart}
 				
-            <div class="cart-table-row sum-container">
+           
+		    <div class="cart-table-row btn-buy-container">
+		    <div class="cart-table-row sum-container">
               <div class="cart-table-cell__title cart-table-cell__sum">
                 <div class="item">sum: ${sumCart.toLocaleString()}$</div>
               </div>
             </div>
-		    <div class="cart-table-row btn-buy-container">
 		      <button class="btn btn-success addToCartBtn btn-buy">buy</button>
 			</div>
           </div>

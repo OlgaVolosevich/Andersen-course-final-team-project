@@ -30,9 +30,9 @@
 .icon-shopping-bag:before {
   content: "\f290";
 }
-.icon-shopping-basket:before {
-  content: "\f291";
-}
+/*.cart-item__amount:before {*/
+/*  content: "\f291";*/
+/*}*/
 .icon-cart:before {
   content: "\e93a";
 }
