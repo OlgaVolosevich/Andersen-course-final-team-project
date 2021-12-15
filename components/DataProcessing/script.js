@@ -10,8 +10,8 @@ window.onload = function () {
     )[0],
     categories: {
       allCategory: document.getElementById("all"),
-      womenCategory: document.getElementById("women clothing"),
-      menCategory: document.getElementById("men clothing"),
+      womenCategory: document.getElementById("women's clothing"),
+      menCategory: document.getElementById("men's clothing"),
       electCategory: document.getElementById("electronics"),
       jewelryCategory: document.getElementById("jewelery"),
     },
